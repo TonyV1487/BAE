@@ -17,7 +17,7 @@ app.use(passport.session());
 
 const routes = require("./routes");
 const users = require("./routes/api/user");
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Define middleware here
 app.use(cors());
@@ -30,7 +30,16 @@ app.use(users);
 
 // connect to db (meetingsdb)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
+var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/meetingsdb";
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4 // Use IPv4, skip trying IPv6
+};
+
+mongoose.connect(MONGODB_URI, options);
 
 // Start the API server
 app.listen(process.env.PORT || PORT, function() {
