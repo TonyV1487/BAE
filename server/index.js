@@ -42,8 +42,8 @@ const options = {
 mongoose.connect(MONGODB_URI, options);
 
 // Start the API server
-app.listen(process.env.PORT || PORT, function() {
-  console.log("Express server is up and running!");
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 // app.listen(PORT, function() {
 //   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
