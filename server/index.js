@@ -31,6 +31,8 @@ app.use(users);
 // connect to db (meetingsdb)
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
+var MONGODB_URL =
+  "mongodb://<dbuser>:<dbpassword>@ds347917.mlab.com:47917/heroku_v1q1k4v0";
 var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/meetingsdb";
 const options = {
   useNewUrlParser: true,
