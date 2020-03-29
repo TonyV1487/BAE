@@ -10,7 +10,7 @@ const passport = require("./config/passport");
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.use(session({ secret: "cats" }));
+// app.use(session({ secret: "cats" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
