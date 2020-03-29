@@ -31,15 +31,28 @@ app.use(users);
 // connect to db (meetingsdb)
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
-var MONGODB_URL =
-  "mongodb://<dbuser>:<dbpassword>@ds347917.mlab.com:47917/heroku_v1q1k4v0";
-var MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/meetingsdb";
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  family: 4 // Use IPv4, skip trying IPv6
+var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
+
+var options = {
+  server: {
+    socketOptions: {
+      keepAlive: 300000,
+      connectTimeoutMS: 30000
+    }
+  },
+  replset: {
+    socketOptions: {
+      keepAlive: 300000,
+      connectTimeoutMS: 30000
+    }
+  }
 };
+
+mongoose.connect(uri, options);
+
+var db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error:"));
 
 mongoose.connect(MONGODB_URI, options);
 
