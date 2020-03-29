@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const path = require("path");
 const apiRoutes = require("./api");
 
 // api routes
@@ -7,7 +8,7 @@ router.use("/api", apiRoutes);
 // one get route
 
 router.get("/", (req, res) => {
-  res.send("error");
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 module.exports = router;
