@@ -23,11 +23,8 @@
     "nodemon": "^1.18.7"
   },
   "scripts": {
-    "client-install": "npm install ./client/package.json",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon ./server/index.js",
-    "client": "npm start ./client/src/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
