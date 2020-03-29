@@ -23,7 +23,7 @@ app.use(passport.session());
 
 const routes = require("./routes");
 const users = require("./routes/api/user");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Define middleware here
 app.use(cors());
