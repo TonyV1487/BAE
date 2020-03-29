@@ -55,8 +55,6 @@ var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 
-mongoose.connect(MONGODB_URI, options);
-
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
