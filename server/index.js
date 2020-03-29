@@ -3,14 +3,20 @@ const mongoose = require("mongoose");
 const app = express();
 
 const cors = require("cors");
-var session = require("express-session"),
-  bodyParser = require("body-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const bodyParser = require("body-parser");
 const passport = require("./config/passport");
 
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "../client/build")));
 
-// app.use(session({ secret: "cats" }));
+app.use(
+  session({
+    secret: "cats",
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,18 +40,8 @@ app.use(users);
 var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
 
 var options = {
-  server: {
-    socketOptions: {
-      keepAlive: 300000,
-      connectTimeoutMS: 30000
-    }
-  },
-  replset: {
-    socketOptions: {
-      keepAlive: 300000,
-      connectTimeoutMS: 30000
-    }
-  }
+  keepAlive: 300000,
+  connectTimeoutMS: 30000
 };
 
 mongoose.connect(uri, options);
