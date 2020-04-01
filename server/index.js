@@ -30,6 +30,10 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 // add routes
 app.use(routes);
 app.use(users);
@@ -50,8 +54,8 @@ var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 
-app.get("/*", function(req, res) {
-  res.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 // Start the API server
