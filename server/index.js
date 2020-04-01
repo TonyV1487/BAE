@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const routes = require("./routes");
+const routes = require("./routes/index.js");
 const users = require("./routes/api/user");
 const PORT = process.env.PORT || 8080;
 
