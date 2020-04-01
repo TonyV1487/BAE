@@ -50,6 +50,10 @@ var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 
+app.get("/*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
+});
+
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
