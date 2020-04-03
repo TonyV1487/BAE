@@ -3,20 +3,20 @@ const mongoose = require("mongoose");
 const app = express();
 
 const cors = require("cors");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+// const session = require("express-session");
+// const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const passport = require("./config/passport");
 
 app.use(express.static("client/build"));
 // app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.use(
-  session({
-    secret: "cats",
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-);
+// app.use(
+//   session({
+//     secret: "cats",
+//     store: new MongoStore({ mongooseConnection: mongoose.connection })
+//   })
+// );
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,15 +40,15 @@ app.use(users);
 
 // connect to db (meetingsdb)
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
-var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
+// var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
 
-var options = {
-  keepAlive: 300000,
-  connectTimeoutMS: 30000
-};
+// var options = {
+//   keepAlive: 300000,
+//   connectTimeoutMS: 30000
+// };
 
-mongoose.connect(uri, options);
+// mongoose.connect(uri, options);
 
 var db = mongoose.connection;
 
