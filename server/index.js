@@ -40,15 +40,15 @@ app.use(users);
 
 // connect to db (meetingsdb)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
-// var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb");
+var uri = "mongodb://admin:password1@ds347917.mlab.com:47917/heroku_v1q1k4v0";
 
-// var options = {
-//   keepAlive: 300000,
-//   connectTimeoutMS: 30000
-// };
+var options = {
+  keepAlive: 300000,
+  connectTimeoutMS: 30000
+};
 
-// mongoose.connect(uri, options);
+mongoose.connect(uri, options);
 
 var db = mongoose.connection;
 
