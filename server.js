@@ -12,7 +12,7 @@ const routes = require("./routes");
 //   "mongodb+srv://TonyV1487:odWYi8bzmbyQ30Xd@bae-mcyk8.mongodb.net/test?retryWrites=true&w=majority";
 
 // connect to DB
-mongoose.connect("mongodb://localhost/meetingsdb", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/meetingsdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -30,6 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 // HTTP request logger
 app.use(morgan("tiny"));
 app.use("/", routes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Start the API server
 app.listen(process.env.PORT || PORT, function () {
