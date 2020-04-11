@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Logo from '../../assets/img/updated BAE.png';
-import './style.css';
+import React, { useState, useEffect } from "react";
+import Logo from "../../assets/img/updated BAE.png";
+import "./style.css";
 
 function Navbar() {
   const [isActive, setisActive] = useState(false);
   const [logout, setLogout] = useState(true);
 
   var full_url = document.URL; // Get current url
-  var url_array = full_url.split('/'); // Split the string into an array with / as separator
+  var url_array = full_url.split("/"); // Split the string into an array with / as separator
 
   useEffect(() => {
     if (
-      url_array[3] === 'user' ||
-      url_array[3] === 'meeting' ||
-      url_array[3] === 'newmeeting'
+      url_array[3] === "user" ||
+      url_array[3] === "meeting" ||
+      url_array[3] === "newmeeting"
     ) {
       setLogout(false);
     }
@@ -46,11 +46,11 @@ function Navbar() {
         </a>
       </div>
 
-      <div className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
+      <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-end">
           <div className="navbar-item flex justify-end">
-            <a href={logout ? '/login' : '/'} className="button is-warning">
-              {logout ? 'Login' : 'Logout'}
+            <a href={logout ? "/login" : "/"} className="button is-warning">
+              {logout ? "Login" : "Logout"}
             </a>
           </div>
         </div>
