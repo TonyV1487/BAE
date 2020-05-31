@@ -6,3 +6,11 @@ BAE presents you with a dashboard where you can write a list of things planned o
 
 We are utilizing Node.js, Express, React, and MongoDB in this app.
 
+## Screenshots
+Homepage:
+
+
+User Page:
+
+
+Meeting Page:
