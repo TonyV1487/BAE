@@ -6,11 +6,14 @@ BAE presents you with a dashboard where you can write a list of things planned o
 
 We are utilizing Node.js, Express, React, and MongoDB in this app.
 
+Login - testuser@gmail; Password - user123
+
 ## Screenshots
 Homepage:
-
+![Homepage](https://github.com/TonyV1487/BAE/blob/master/client/src/assets/img/Homepage.png)
 
 User Page:
-
+![User page](https://github.com/TonyV1487/BAE/blob/master/client/src/assets/img/UserPage.png)
 
 Meeting Page:
+![Meeting page](https://github.com/TonyV1487/BAE/blob/master/client/src/assets/img/MeetingPage.png)
